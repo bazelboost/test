@@ -14,6 +14,7 @@ cc_library(
     visibility = ["//visibility:public"],
     strip_include_prefix = "include",
     includes = ["include"],
+    defines = ["BOOST_ALL_NO_LIB"],
     hdrs = glob(["include/**/*.hpp", "include/**/*.ipp"], exclude = _detail_hdrs),
     srcs = glob(["src/*.cpp"]),
     deps = [
