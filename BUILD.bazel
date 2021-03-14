@@ -29,5 +29,6 @@ cc_library(
         "@boost//numeric_conversion",
         "@boost//exception",
         "@boost//algorithm",
+        "@boost//move",
     ]
 )
