@@ -1,0 +1,33 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+_detail_hdrs = [
+    "include/boost/test/detail/*.hpp",
+]
+
+cc_library(
+    name = "test_internal",
+    hdrs = glob(_detail_hdrs),
+)
+
+cc_library(
+    name = "test",
+    visibility = ["//visibility:public"],
+    strip_include_prefix = "include",
+    includes = ["include"],
+    hdrs = glob(["include/**/*.hpp", "include/**/*.ipp"], exclude = _detail_hdrs),
+    srcs = glob(["src/*.cpp"]),
+    deps = [
+        ":test_internal",
+        "@boost//config",
+        "@boost//type_traits",
+        "@boost//preprocessor",
+        "@boost//utility",
+        "@boost//smart_ptr",
+        "@boost//function",
+        "@boost//mpl",
+        "@boost//iterator",
+        "@boost//numeric_conversion",
+        "@boost//exception",
+        "@boost//algorithm",
+    ]
+)

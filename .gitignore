@@ -13,3 +13,4 @@ smoke-ts-sink*.*
 build/tmp
 build/build_dir
 build/build_*
+/bazel-*
